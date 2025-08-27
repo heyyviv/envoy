@@ -37,6 +37,7 @@ Envoy is a lightweight, background utility that logs your terminal commands. It'
    ```
 
 4. **Configure Your Shell**
+  Now, you need to add the shell hook to your profile so that Envoy runs with every command. This involves copying a code block into your shell's configuration file (.zshrc or .bashrc) and updating the path to the Envoy executable.
 
    * **For Zsh (macOS and Linux):**
      Add the following function to your `~/.zshrc` file:
