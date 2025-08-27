@@ -1,3 +1,0 @@
-[2025-08-27 00:58:39] ls
-[2025-08-27 00:59:24] vi  ~/.zshrc
-[2025-08-27 01:00:39] go build -o /Users/vivekdas/Desktop/projects/envoy/main
