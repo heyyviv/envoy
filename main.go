@@ -17,17 +17,23 @@ var logDirectory = ""
 const statusFile = ".envoy_log_status"
 
 func main() {
-	// Determine the executable's directory.
-	execPath, err := os.Executable()
+	// Determine the user's home directory.
+	homeDir, err := os.UserHomeDir()
 	if err != nil {
-		log.Printf("ERROR: Could not get executable path: %v", err)
+		log.Printf("ERROR: Could not get user home directory: %v", err)
 		return
 	}
-	execDir := filepath.Dir(execPath)
 
-	// If the logDirectory variable is empty, default it to the executable's directory.
+	// If the logDirectory variable is empty, default it to ~/.envoy.
 	if logDirectory == "" {
-		logDirectory = execDir
+		logDirectory = filepath.Join(homeDir, ".envoy")
+	}
+
+	// Ensure the log directory exists.
+	err = os.MkdirAll(logDirectory, 0755)
+	if err != nil {
+		log.Printf("ERROR: Could not create log directory: %v", err)
+		return
 	}
 
 	// Check if a command was passed.
